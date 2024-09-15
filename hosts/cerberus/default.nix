@@ -15,7 +15,11 @@ nixpkgs.lib.nixosSystem {
         wsl.nixosModules.wsl
         home-manager.nixosModules.home-manager
         {
-            # networking.hostname = "cerberus";
+            networking = {
+                hostName = "cerberus";
+                search = "tail1e793.ts.net";
+                nameservers = "10.255.255.254";
+            };
             nixpkgs.overlays = overlays;
             # Set registry to flake packages, used for nix X commands
             nix.registry.nixpkgs.flake = nixpkgs;
