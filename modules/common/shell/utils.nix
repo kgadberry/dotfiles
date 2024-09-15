@@ -46,7 +46,6 @@ in {
             programs.bat = {
                 enable = true; # cat replacement
                 config = {
-                    theme = config.theme.colors.batTheme;
                     pager = "less -R"; # Don't auto-exit if one screen
                 };
             };

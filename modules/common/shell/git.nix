@@ -1,16 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let home-packages = config.home-manager.users.${config.user}.home.packages;
-
-in {
-
-    home.packages = with pkgs; [
-        gh
-        git
-        git-crypt
-        git-lfs
-    ];
-
+{
     options = {
         gitName = lib.mkOption {
             type = lib.types.str;
@@ -22,16 +12,17 @@ in {
         };
     };
 
-    config = {
+    config.home-manager.users = {
 
-        # Set git configuration for root
-        home-manager.users.root.programs.git = {
-            enable = true;
-            extraConfig.safe.directory = config.dotfilesPath;
-        };
-        
-        # Set git user configuration
-        home-manager.users.${config.user}.programs.git = {
+        ${config.user} = {
+            home.packages = with pkgs; [
+                gh
+                git
+                git-crypt
+                git-lfs
+            ];
+
+            programs.git = {
                 enable = true;
                 userName = config.gitName;
                 userEmail = config.gitEmail;
@@ -77,6 +68,12 @@ in {
             };
         };
 
+        # Set git configuration for root
+        root.programs.git = {
+            enable = true;
+            extraConfig.safe.directory = config.dotfilesPath;
+        };
+        
     };
 
 }

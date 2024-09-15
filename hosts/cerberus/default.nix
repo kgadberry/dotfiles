@@ -6,7 +6,7 @@ with inputs;
 
 nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    specialArgs = { };
+    specialArgs = {};
     modules = [
         ../../modules/common
         ../../modules/nixos
@@ -15,12 +15,13 @@ nixpkgs.lib.nixosSystem {
         wsl.nixosModules.wsl
         home-manager.nixosModules.home-manager
         {
-            networking.hostname = "cerberus";
+            # networking.hostname = "cerberus";
             nixpkgs.overlays = overlays;
             # Set registry to flake packages, used for nix X commands
             nix.registry.nixpkgs.flake = nixpkgs;
             identityFile = "/home/${globals.user}/.ssh/id_ed25519";
             gui.enable = false;
+            passwordHash = nixpkgs.lib.fileContents ../../password.sha512;
             wsl = {
                 enable = true;
                 wslConf.automount.root = "/mnt";
@@ -30,9 +31,6 @@ nixpkgs.lib.nixosSystem {
                 wslConf.network.generateResolvConf = false; # disabled because it breaks tailscale
                 interop.includePath = true; # Include Windows PATH
             };
-
-            dotfiles.enable = true;
-            nixlang.enable = true;
         }
     ];
 }

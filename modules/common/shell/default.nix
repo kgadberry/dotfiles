@@ -7,5 +7,5 @@
         ./charm.nix
         ./git.nix
         ./starship.nix
-    ]
+    ];
 }
