@@ -1,4 +1,4 @@
-# System configuration for WSL on workstation (cerberus)
+# system configuration for WSL on workstation (cerberus)
 
 { inputs, globals, overlays, ... }:
 
@@ -6,7 +6,7 @@ with inputs;
 
 nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    specialArgs = {};
+    specialArgs = { };
     modules = [
         ../../modules/common
         ../../modules/nixos
@@ -17,11 +17,12 @@ nixpkgs.lib.nixosSystem {
         {
             networking = {
                 hostName = "cerberus";
-                search = ["tail1e793.ts.net"];
+                # TODO: make tailscale integration more declarative?
+                search = ["tail1e793.ts.net"]; 
                 nameservers = ["10.255.255.254"];
             };
             nixpkgs.overlays = overlays;
-            # Set registry to flake packages, used for nix X commands
+            # set registry to flake packages, used for nix X commands
             nix.registry.nixpkgs.flake = nixpkgs;
             identityFile = "/home/${globals.user}/.ssh/id_ed25519";
             gui.enable = false;
@@ -33,7 +34,7 @@ nixpkgs.lib.nixosSystem {
                 startMenuLaunchers = true;
                 nativeSystemd = true;
                 wslConf.network.generateResolvConf = false; # disabled because it breaks tailscale
-                interop.includePath = true; # Include Windows PATH
+                interop.includePath = true; # include Windows PATH
             };
         }
     ];

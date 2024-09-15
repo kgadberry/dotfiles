@@ -46,6 +46,15 @@
 
     # Set stateVersion for root and default user
     # Probably shouldn't need to be changed
-    config.home-manager.users.${config.user}.home.stateVersion = "24.05";
+    
     config.home-manager.users.root.home.stateVersion = "24.05";
+    config.home-manager.users.${config.user}.home = {
+        stateVersion = "24.05";
+
+        # Enable the experimental features
+        sessionVariables = {
+            NIX_CONFIG = "experimental-features = nix-command flakes";
+        };
+    };
+    
 }
