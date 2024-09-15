@@ -3,6 +3,7 @@
 {
     # Set zsh as default shell
     users.users.${config.user}.shell = pkgs.zsh;
+    programs.zsh.enable = true;
     
     home-manager.users.${config.user} = {
         
