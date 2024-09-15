@@ -29,11 +29,10 @@
 
             globals = rec {
                 user = "kgadberry";
-                passwordHash = "$argon2i$v=19$m=4096,t=3,p=1$L2Rldi91cmFuZG9t$W6+2KgIzQyZeMU4y7Jt2ED1xAOCuCvSWWXSG+NqFT0Q";
                 fullName = "Kaye Gadberry";
                 gitName = fullName;
                 gitEmail = "1781520+kgadberry@users.noreply.github.com";
-                dotfilesRepo = "git@github.com:kgadberry/dotfiles";
+                dotfilesRepo = "github:kgadberry/dotfiles";
             };
 
             overlays = [
