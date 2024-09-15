@@ -17,7 +17,7 @@ nixpkgs.lib.nixosSystem {
         {
             networking = {
                 hostName = "cerberus";
-                search = "tail1e793.ts.net";
+                search = ["tail1e793.ts.net"];
                 nameservers = ["10.255.255.254"];
             };
             nixpkgs.overlays = overlays;
