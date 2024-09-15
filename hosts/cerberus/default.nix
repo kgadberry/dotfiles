@@ -18,7 +18,7 @@ nixpkgs.lib.nixosSystem {
             networking = {
                 hostName = "cerberus";
                 search = "tail1e793.ts.net";
-                nameservers = "10.255.255.254";
+                nameservers = ["10.255.255.254"];
             };
             nixpkgs.overlays = overlays;
             # Set registry to flake packages, used for nix X commands
