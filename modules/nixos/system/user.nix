@@ -39,15 +39,15 @@
             userDirs = {
                 enable = true;
                 createDirectories = true;
-                documents = "$HOME/Documents";
-                download = "$HOME/Downloads";
-                music = "$HOME/Media/Music";
-                pictures = "$HOME/Media/Images";
-                videos = "$HOME/Media/Videos";
-                desktop = "$HOME/Other/Desktop";
-                publicShare = "$HOME/Other/Public";
-                templates = "$HOME/Other/Templates";
-                extraConfig = { XDG_DEV_DIR = "$HOME/Code"; };
+                documents = "$HOME/documents";
+                download = "$HOME/downloads";
+                music = "$HOME/media/music";
+                pictures = "$HOME/media/images";
+                videos = "$HOME/media/videos";
+                desktop = "$HOME/other/desktop";
+                publicShare = "$HOME/other/public";
+                templates = "$HOME/other/templates";
+                extraConfig = { XDG_DEV_DIR = "$HOME/dev"; };
             };
         };
 
